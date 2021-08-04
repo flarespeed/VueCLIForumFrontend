@@ -11,7 +11,31 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div id="app">
+      <div class="header">
+        DjangoRestForum
+      </div>
+      <div v-for="thread in threads">
+        <div>
+          <a href="{{thread.url}}">{{thread.title}}</a>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    let app = new Vue({
+      el: '#app',
+      data: {
+        threads: [{'title': 'placeholder', 'url': '#placeholderlink'}],
+      },
+      methods: {
+        loadJsonData: function() {
+          
+        },
+        created: function() {
+          this.loadJsonData()
+        }
+      }
+    })
+    </script>
   </body>
 </html>
